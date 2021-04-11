@@ -1,6 +1,8 @@
 
 pipeline {
-    agent { dockerfile true }
+    agent { dockerfile true 
+          args 'hello.py'
+          }
     stages {
         stage('Build') {
             steps {
