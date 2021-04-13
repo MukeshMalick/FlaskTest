@@ -22,7 +22,7 @@ pipeline {
           }
       
           stage('Run image') {
-      steps{
+      steps {
      
       sh "docker run -d -p 9090:9090 ${imagename}:latest"
 
@@ -34,4 +34,5 @@ pipeline {
     
     
   }
+}
 }
