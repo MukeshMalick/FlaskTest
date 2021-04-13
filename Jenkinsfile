@@ -16,7 +16,7 @@ pipeline {
     stage('Building image') {
       steps{
      
-      sh "echo done"
+      sh "docker build -t imagename:latest ."
 
 
           }
