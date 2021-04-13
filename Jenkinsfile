@@ -1,11 +1,28 @@
-pipeline {environment {imagename = "977315/flask-test"registryCredential = 'docker-creds'dockerImage = ''} agent any
-stages {
-stage('Cloning Git') {
-steps {git([url: 'https://github.com/MukeshMalick/FlaskTest.git', branch: 'main'])}}stage('Building image') {steps{script {dockerImage = docker.build imagename}}}stage('Deploy Image') {steps{script {docker.withRegistry( '', registryCredential ) {dockerImage.push("$BUILD_NUMBER")dockerImage.push('latest')}}}}stage('Remove Unused docker image') {
-steps{
-sh "docker rmi $imagename:$BUILD_NUMBER"
-sh "docker rmi $imagename:latest"
-}
-}
-}
+pipeline {
+  environment {
+    imagename = "977315/flask-test"
+    registryCredential = 'docker-creds'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+ //       git([url: 'https://github.com/ismailyenigul/hacicenkins.git', branch: 'master'])
+ 	checkout scm
+
+      }
+    }
+    stage('Building image') {
+      steps{
+     
+      sh "echo done"
+
+
+          }
+      }
+   
+    
+    
+  }
 }
