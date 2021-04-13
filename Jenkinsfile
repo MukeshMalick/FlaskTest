@@ -18,6 +18,7 @@ pipeline {
      
         sh "docker build -t ${imagename}:latest ."
 
+}
 
           }
       
@@ -31,7 +32,16 @@ pipeline {
             
       }
    
-    
+        stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+
     
   }
 }
