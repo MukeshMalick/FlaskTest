@@ -16,10 +16,19 @@ pipeline {
     stage('Building image') {
       steps{
      
-      sh "docker build -t imagename:latest ."
+        sh "docker build -t ${imagename}:latest ."
 
 
           }
+      
+          stage('Run image') {
+      steps{
+     
+      sh "docker run -d -p 9090:9090 ${imagename}:latest"
+
+
+          }
+            
       }
    
     
